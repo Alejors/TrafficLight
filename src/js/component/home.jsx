@@ -28,7 +28,7 @@ const Trafficlight = () => {
 			</div>
 			<br />
 			<button type="button" onClick={(e) => setCounter(0)} className="btn btn-dark">Auto-toggle</button>
-			<button type="button" className="btn btn-light mt-2">Add purple</button>
+			{/* <button type="button" className="btn btn-light mt-2">Add purple</button> */}
 
 		</div>
 	)
