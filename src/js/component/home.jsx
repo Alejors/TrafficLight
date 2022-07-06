@@ -5,7 +5,7 @@ const Trafficlight = () => {
 	const [show, setShow] = useState(false);
 
 	let toggle = () => {
-		(trafficColor === "") ? (setTrafficColor("red")) : (trafficColor === "red") ? (setTrafficColor("yellow")) : (trafficColor === "yellow") ? (setTrafficColor("green")) : (trafficColor === "green") ? (setTrafficColor("blue")) : (trafficColor === "blue") ? (setTrafficColor("red")) : null;
+		(trafficColor === "") ? (setTrafficColor("red")) : (trafficColor === "red") ? (setTrafficColor("yellow")) : (trafficColor === "yellow") ? (setTrafficColor("green")) : (trafficColor === "green") ? ((show === true) ? (setTrafficColor("blue")) : (setTrafficColor("red"))) : (trafficColor === "blue") ? (setTrafficColor("red")) : null;
 	}
 
 	return (
