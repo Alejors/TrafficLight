@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 const Trafficlight = () => {
 	const [trafficColor, setTrafficColor] = useState("");
@@ -6,6 +6,34 @@ const Trafficlight = () => {
 
 	let toggle = () => {
 		(trafficColor === "") ? (setTrafficColor("red")) : (trafficColor === "red") ? (setTrafficColor("yellow")) : (trafficColor === "yellow") ? (setTrafficColor("green")) : (trafficColor === "green") ? ((show === true) ? (setTrafficColor("blue")) : (setTrafficColor("red"))) : (trafficColor === "blue") ? (setTrafficColor("red")) : null;
+	}
+
+	let autotoggle = () => {
+		setTrafficColor("red");
+		setTimeout(rojoAamarillo, 3000);
+	}
+
+	let rojoAamarillo = () => {
+		setTrafficColor("yellow");
+		setTimeout(amarilloAverde, 3000);
+	}
+
+	let amarilloAverde = () => {
+		setTrafficColor("green");
+		if (show === true) {
+			setTimeout(verdeAazul, 3000);
+		} else {
+			setTimeout(turnoff, 3000);
+		}
+	}
+
+	let verdeAazul = () => {
+		setTrafficColor("blue");
+		setTimeout(turnoff, 3000);
+	}
+
+	let turnoff = () => {
+		setTrafficColor("");
 	}
 
 	return (
@@ -18,8 +46,9 @@ const Trafficlight = () => {
 				<div onClick={() => setTrafficColor("blue")} className={"rounded-circle bg-primary mt-2" + ((trafficColor !== "blue") ? " bg-opacity-25" : "") + ((show === false) ? " d-none" : "")}></div>
 			</div>
 			<br />
-			<button type="button" onClick={(e) => toggle()} className="btn btn-dark">Change me</button>
-			<button type="button" onClick={(e) => setShow(!show)} className="btn btn-light mt-2">Toggle extra light</button>
+			<button type="button" onClick={(e) => toggle()} className="btn btn-dark">Manual change</button>
+			<button type="button" onClick={(e) => autotoggle()} className="btn btn-danger">Auto cycle</button>
+			<button type="button" onClick={(e) => setShow(!show)} className="btn btn-light mt-2">Extra light</button>
 
 		</div>
 	)
